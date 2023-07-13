@@ -8,6 +8,7 @@ WORKDIR /app/
 
 COPY ./app /app/
 #COPY ./flask.manifest.template ./entrypoint.sh /app/
+RUN mkdir data
 
 RUN echo "--setup-flask--" \
     && pip3 install Flask
