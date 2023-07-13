@@ -17,5 +17,7 @@ RUN gramine-sgx-gen-private-key \
     && gramine-manifest -Darch_libdir=/lib/x86_64-linux-gnu flask.manifest.template flask.manifest \
     && gramine-sgx-sign --manifest flask.manifest --output flask.manifest.sgx
 
+VOLUME /data/
+
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
