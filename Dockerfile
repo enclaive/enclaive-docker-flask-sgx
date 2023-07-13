@@ -21,6 +21,6 @@ RUN echo "--setup-flask--" \
 VOLUME /data/
 
 #RUN /bin/bash
-RUN python3 -m flask run
+ENRYPOINT[ "python3", "-m", "flask", "run" ]
 #RUN chmod +x /app/entrypoint.sh
 #ENTRYPOINT ["/app/entrypoint.sh"]
