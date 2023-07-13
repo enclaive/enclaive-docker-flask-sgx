@@ -1,0 +1,8 @@
+version: '1'
+
+services:
+
+  flask-sgx:
+    build: https://github.com/ole-hansen/docker-flask-sgx.git
+    devices:
+      - "/dev/sgx/eclave:/dev/sgx/enclave"
