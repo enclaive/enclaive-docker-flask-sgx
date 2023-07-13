@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -8,6 +8,7 @@ services:
     build: https://github.com/ole-hansen/docker-flask-sgx.git#main
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
+    tty: true
   flask-vanilla:
     image: ole-hansen/flask-vanilla
     container_name: flask-vanilla
