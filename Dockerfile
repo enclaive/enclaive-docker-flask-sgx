@@ -7,7 +7,7 @@ RUN echo "--install-python--" \
 WORKDIR /app/
 
 COPY ./app /app/
-#COPY ./flask.manifest.template ./entrypoint.sh /app/
+COPY ./entrypoint.sh /app/
 RUN mkdir data
 
 RUN echo "--setup-flask--" \
