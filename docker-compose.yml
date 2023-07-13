@@ -3,8 +3,12 @@ version: '2'
 services:
 
   flask-sgx:
+    container_name: flask-sgx
     build: https://github.com/ole-hansen/docker-flask-sgx.git#main
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
   flask-vanilla:
+    container_name: flask-vanilla
     build: https://github.com/ole-hansen/docker-flask-sgx.git#demo
+    volumes:
+      - "/data/:/app/data/"
