@@ -10,5 +10,3 @@ services:
   flask-vanilla:
     container_name: flask-vanilla
     build: https://github.com/ole-hansen/docker-flask-sgx.git#demo
-    volumes:
-      - "/data/:/app/data/"

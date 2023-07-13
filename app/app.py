@@ -17,7 +17,7 @@ dictConfig(
             },
             "file": {
                 "class": "logging.FileHandler",
-                "filename": "/app/data/flask.log",
+                "filename": "data/flask.log",
                 "formatter": "default",
             },
         },
