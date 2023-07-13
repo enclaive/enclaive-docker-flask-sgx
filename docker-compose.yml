@@ -8,7 +8,6 @@ services:
     build: https://github.com/ole-hansen/docker-flask-sgx.git#main
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
-    command: tail -F anything
   flask-vanilla:
     image: ole-hansen/flask-vanilla
     container_name: flask-vanilla
