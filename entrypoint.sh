@@ -1,4 +1,3 @@
 #!/bin/bash
 
-gramine-sgx-get-token --output flask.token --sig flask.sig
-gramine-sgx flask
+python3 -m flask run
