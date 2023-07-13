@@ -4,7 +4,7 @@
   <h2 align="center">Flask-SGX: Write Flask applications in the safest Confidential Compute runtime</h2>
 
   <p align="center">
-    #intelsgx #confidentialcompute #python
+    #intelsgx #confidentialcompute #python #flask #framework
     <br />
     <a href="#contributing">Contribute</a>
     ·
@@ -48,7 +48,7 @@ Following benefits come for free with Flask-SGX :
 
 * Protect Python/Flask code, files, applications, services, APIs, (AI) models against intelectual property theft/violation irrespectively where the application runs thanks to full fledge memory container encryption and integrity protection at runtime
 * Shield container application against container escape attacks with hardware-graded security against kernel-space exploits, malicious and accidental privilege [insider](https://www.ibm.com/topics/insider-threats) attacks, [UEFI firmware](https://thehackernews.com/2022/02/dozens-of-security-flaws-discovered-in.html) exploits and other "root" attacks using the corruption of the application to infiltrate your network and system
-* Build and deploy Python application as usual while inheriting literally for free security and privacy through containerization including
+* Build and deploy Flask applications as usual while inheriting literally for free security and privacy through containerization including
     * strictly better TOMs (technical and organizatorial measures)
     * privacy export regulations compliant deployment anywhere, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
     * GDPR/CCPA compliant processing ("data in use") of user data (in the cloud) as data is relatively anonymized thanks to the enclave
@@ -155,6 +155,7 @@ Distributed under the Apache 2.0 License. See `LICENSE` for further information.
 
 This project greatly celebrates all contributions from the gramine team.
 
+* [enclaive.io](https://github.com/enclaive/)
 * [Gramine Project](https://github.com/gramineproject)
 * [Intel SGX](https://github.com/intel/linux-sgx-driver)
 * [Python](https://www.python.org/)
