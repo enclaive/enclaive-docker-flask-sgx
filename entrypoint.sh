@@ -2,4 +2,3 @@
 
 gramine-sgx-get-token --output flask.token --sig flask.sig
 gramine-sgx flask
-tail -F /dev/null
