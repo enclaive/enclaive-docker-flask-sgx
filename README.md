@@ -119,7 +119,15 @@ docker compose up -d --build
 
 ## Modify the image
 
-The `/app/`- folder acts as the root for your flask application. 
+The `/app/`- folder acts as the root for your flask application. Additional files and modules should be placed here.
+If a file named 'app.py' is present the flask command will use it as an entry point.
+
+<!-- DEBUGGING -->
+## Debuggin the image
+
+The SGX container is configured to log warnings and errors to `flask-gramine-sgx.log`. This is a great source for debugging. Expanding the Flask application might lead to a wider range of files that need to be trusted/allowed.
+
+Setting the manifests filecheck policy to: `sgx.file_check_policy = "allow_all_but_log"` for debuggin purpose will log required files to the above stated file.
 
 <!-- RUN THE IMAGE -->
 ## Run the image
