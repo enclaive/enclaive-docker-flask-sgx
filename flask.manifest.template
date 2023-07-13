@@ -19,7 +19,7 @@ fs.mounts = [
     { path = "/app/data/",         uri = "file:/data/", type = "encrypted", key_name = "logkey" },
 ]
 
-fs.insecure_keys.logkey = "ffeeddccbbaa99887766554433221100"
+fs.insecure__keys.logkey = "ffeeddccbbaa99887766554433221100"
 
 sgx.trusted_files = [
     "file:{{ gramine.libos}}",
