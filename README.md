@@ -125,10 +125,13 @@ If a file named 'app.py' is present the flask command will use it as an entry po
 <!-- DEBUGGING -->
 ## Debuggin the image
 
+Changing the entry point in `Dockerfile` to `/bin/bash` allows us to manually start the flask app from within the container with `gramine-sgx flask`. This way we got access to the log and can observe errors occurring from inside the container.
+
 The SGX container is configured to log warnings and errors to `flask-gramine-sgx.log`. This is a great source for debugging. Expanding the Flask application might lead to a wider range of files that need to be trusted/allowed.
 
-Setting the manifests filecheck policy to: `sgx.file_check_policy = "allow_all_but_log"` for debuggin purpose will log required files to the above stated file.
+Setting the manifests filecheck policy to: `sgx.file_check_policy = "allow_all_but_log"` for debugging purpose will log required files to the above stated file.
 
+For debugging purpose, we provide encryption keys through `fs.insecure__keys.<key_name>`. This is insecure and should not be used in production.
 <!-- RUN THE IMAGE -->
 ## Run the image
 Run
