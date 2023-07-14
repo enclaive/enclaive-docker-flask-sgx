@@ -122,12 +122,14 @@ docker compose up -d --build
 The `/app/`- folder acts as the root for your flask application. Additional files and modules should be placed here.
 If a file named 'app.py' is present the flask command will use it as an entry point.
 
+Currently the flask app port `5000` is not exposed outside the container. Ports can be mapped through `docker-compose.yml` [(docu)](https://docs.docker.com/compose/networking/)
+
 <!-- DEBUGGING -->
 ## Debuggin the image
 
 Changing the entry point in `Dockerfile` to `/bin/bash` allows us to manually start the flask app from within the container with `gramine-sgx flask`. This way we got access to the log and can observe errors occurring from inside the container.
 
-The SGX container is configured to log warnings and errors to `flask-gramine-sgx.log`. This is a great source for debugging. Expanding the Flask application might lead to a wider range of files that need to be trusted/allowed.
+The SGX container is configured to log warnings and errors to `flask-gramine-sgx.log`. This is a great resource for debugging. Expanding the Flask application might lead to a wider range of files that need to be trusted/allowed.
 
 Setting the manifests filecheck policy to: `sgx.file_check_policy = "allow_all_but_log"` for debugging purpose will log required files to the above stated file.
 
