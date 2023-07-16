@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    with open('/app/static/message.txt', 'r') as file:
+    with open('static/message.txt', 'r') as file:
         file_content = file.read()
-        write_to_log_file("[GET] Sending: " + file_content)
-        return file_content + '\n'
+    write_to_log_file("[GET] Sending: " + file_content)
+    return file_content + '\n'
 
 def write_to_log_file(message):
     log_file_path = '/app/data/flask.log'
