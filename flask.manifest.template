@@ -26,7 +26,7 @@ sgx.trusted_files = [
     "file:{{ gramine.runtimedir() }}/",
     "file:{{ arch_libdir }}/",
 
-    "file:/app/static/message",
+    "file:/app/static/message.txt",
     "file:/app/args.txt",
     "file:/app/app.py",
     "file:/usr/bin/python3",
@@ -56,5 +56,4 @@ sgx.allowed_files = [
     "file:/etc/host.conf",
     "file:/etc/resolv.conf",
     "file:/etc/hosts",
-    "file:/app/static/message",
 ]
