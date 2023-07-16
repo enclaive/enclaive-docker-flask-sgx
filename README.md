@@ -1,6 +1,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+    <table>
+    <tr> 
+      <td align="center">
+      <!--
+        <a href="">
+          <img alt="flask-sgx" height=64px src="">
+        </a>
+        -->
+        <br>Flask-SGX</td>     
+      </td>  
+    </tr>
+    </table>
   <h2 align="center">Flask-SGX: Write Flask applications in the safest Confidential Compute runtime</h2>
 
   <p align="center">
@@ -46,19 +58,21 @@ Application code executing within an Intel SGX enclave:
 ## Why use Flask-SGX (instead of "vanilla" Flask) images?
 Following benefits come for free with Flask-SGX :
 
-* Protect Python/Flask code, files, applications, services, APIs, (AI) models against intelectual property theft/violation irrespectively where the application runs thanks to full fledge memory container encryption and integrity protection at runtime
+* Protect Flask code, files, applications, services, APIs, against intelectual property theft/violation irrespectively where the application runs thanks to full fledge memory container encryption and integrity protection at runtime
 * Shield container application against container escape attacks with hardware-graded security against kernel-space exploits, malicious and accidental privilege [insider](https://www.ibm.com/topics/insider-threats) attacks, [UEFI firmware](https://thehackernews.com/2022/02/dozens-of-security-flaws-discovered-in.html) exploits and other "root" attacks using the corruption of the application to infiltrate your network and system
 * Build and deploy Flask applications as usual while inheriting literally for free security and privacy through containerization including
     * strictly better TOMs (technical and organizatorial measures)
     * privacy export regulations compliant deployment anywhere, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
     * GDPR/CCPA compliant processing ("data in use") of user data (in the cloud) as data is relatively anonymized thanks to the enclave
-
+* Flask-SGX secures data in transit, shielding it from the host system, when acting as a middleware layer between clients and backend components like databases or other services.
+* Flasks secret key generation, when combined with SGX, can benefit from the secure enclave's protection to enhance the confidentiality and security of cryptographic operations and session management within Flask applications.
+* Flasks modular approach combined with SGX can be used to enhance security of each module, running them in seperate enclaves.
 
 <!-- DEPLOY IN THE CLOUD -->
 ## How to deploy Python-SGX in a zero-trust cloud?
 
 The following cloud infrastractures are SGX-ready out of the box
-* [Microsoft Azure Confidential Cloud](https://azure.microsoft.com/en-us/solutions/confidential-compute/) 
+* [Microsoft Azure Confidential Cloud](https://azure.microsoft.com/en-us/solutions/confidential-compute/)
 * [OVH Cloud](https://docs.ovh.com/ie/en/dedicated/enable-and-use-intel-sgx/)
 * [Alibaba Cloud](https://www.alibabacloud.com/blog/alibaba-cloud-released-industrys-first-trusted-and-virtualized-instance-with-support-for-sgx-2-0-and-tpm_596821) 
 * [Kraud Cloud](https://kraud.cloud/)
@@ -119,21 +133,21 @@ docker compose up -d --build
 
 ## Modify the image
 
-The `/app/`- folder acts as the root for your flask application. Additional files and modules should be placed here.
-If a file named 'app.py' is present the flask command will use it as an entry point.
+The `/app/`-folder acts as the root for your flask application. Additional files and modules should be placed here. Build your code structure inside the `/app/`-folder as usual.
+A file names `app.py` or `wsgi.py` needs to be present and will be automatically recognised by the flask run command.
 
 Currently the flask app port `5000` is not exposed outside the container. Ports can be mapped through `docker-compose.yml` [(docu)](https://docs.docker.com/compose/networking/)
 
 <!-- DEBUGGING -->
 ## Debuggin the image
 
-Changing the entry point in `Dockerfile` to `/bin/bash` allows us to manually start the flask app from within the container with `gramine-sgx flask`. This way we got access to the log and can observe errors occurring from inside the container.
+Changing the entry point in `Dockerfile` to `/bin/bash` allows us to manually start the flask app from within the container with `gramine-sgx flask`. This way we got access to the log and are able to observe errors occurring from inside the container.
 
 The SGX container is configured to log warnings and errors to `flask-gramine-sgx.log`. This is a great resource for debugging. Expanding the Flask application might lead to a wider range of files that need to be trusted/allowed.
 
 Setting the manifests filecheck policy to: `sgx.file_check_policy = "allow_all_but_log"` for debugging purpose will log required files to the above stated file.
 
-For debugging purpose, we provide encryption keys through `fs.insecure__keys.<key_name>`. This is insecure and should not be used in production.
+Encryption keys are currently provided through the manifests entry `fs.insecure__keys.<key_name>`. This is insecure and should not be used in production.
 <!-- RUN THE IMAGE -->
 ## Run the image
 Run
@@ -162,6 +176,12 @@ Don't forget to give the project a star! Spread the word on social media! Thanks
 ## License
 
 Distributed under the Apache 2.0 License. See `LICENSE` for further information.
+
+<!-- CONTACT -->
+## Contact
+
+enclaive.io - [@enclaive_io](https://twitter.com/enclaive_io) - contact@enclaive.io - [https://enclaive.io](https://enclaive.io)
+
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
