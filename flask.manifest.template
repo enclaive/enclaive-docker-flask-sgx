@@ -25,7 +25,8 @@ sgx.trusted_files = [
     "file:{{ gramine.libos}}",
     "file:{{ gramine.runtimedir() }}/",
     "file:{{ arch_libdir }}/",
-
+    
+    "file:/app/static/message",
     "file:/app/args.txt",
     "file:/app/app.py",
     "file:/usr/bin/python3",
