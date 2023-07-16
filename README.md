@@ -24,7 +24,7 @@ We can see that the vanilla container shows the content of our log to the host s
 ```sh
 docker exec -it flask-sgx cat /data/flask.log | xxd
 ``` 
-For our SGX container we defined the `/data/`-folder as an encrypted location. This results in files created or present on startup to be encrypted. We can observe that the content written to the log file is no longer visible to the host system and only readable inside the SGX enclave.
+For our SGX container we defined the `/data/`-folder as an encrypted location. This results in files created or present on startup to be encrypted. We can observe that the content written to the log file is no longer visible to the host system and only readable inside the SGX enclave. Therefore we can effectively hide certain info from the host system. 
 
 ## Trusted files
 ### Vanilla:
@@ -44,4 +44,4 @@ Trying the same within the SGX container will lead to a `500`-error from the end
 docker exec -it flask-sgx cat flask-gramine-sgx.log
 ```
 Looking at the gramine log we can see that the static file will not be accepted since its hash value
-no longer matches the initial value at startup. 
+no longer matches the initial value at startup. Hence we are able to prevent unnoticed tampering on predefined files by the host system.
