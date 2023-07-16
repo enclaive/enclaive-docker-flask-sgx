@@ -1,24 +1,47 @@
-## build and run
+# Flask-SGX Demo: file encryption and integrity
+In this demo we will show gramine-sgx's capabilities of file encryption and its ability to prevent file tampering.
+
+## build and run the demo
 ```sh
 git clone -b demo https://github.com/ole-hansen/docker-flask-sgx.git
 docker compose up -d --build
 ```
-
-## query server
-We generate log entries through querying both servers running inside the their respective containers
+## query both server
 
 ```sh
-docker exec -it flask-sgx curl localhost:5000/
 docker exec -it flask-vanilla curl localhost:5000/
+docker exec -it flask-sgx curl localhost:5000/
 ```
+Querying the servers will generate log entries and let the servers return contents of a static file as a reply. We will use this to show the different behaviour of the servers storing the log files and their reaction to tampering with static files. 
 
-## observe: We can read the content of the logfile inside the vanilla container
+## Encrypted files
+### Vanilla:
 ```sh
 docker exec -it flask-vanilla cat data/flask.log
 ``` 
-
-## observe: We CAN'T read the content of the logfile in use by the sgx process
+We can see that the vanilla container shows the content of our log to the host system in plaintext.
+### SGX:
 ```sh
-docker exec -it flask-sgx cat /data/flask.log
+docker exec -it flask-sgx cat /data/flask.log | xxd
+``` 
+For our SGX container we defined the `/data/`-folder as an encrypted location. This results in files created or present on startup to be encrypted. We can observe that the content written to the log file is no longer visible to the host system and only readable inside the SGX enclave.
+
+## Trusted files
+### Vanilla:
+```sh
+docker exec -it flask-vanilla bash -c "echo 'Goodbye Vanilla' > /app/static/message.txt"
+docker exec -it flask-vanilla curl localhost:5000/
 ```
-Terminating the SGX process would lead to a container shutdown. The content of the logfile will be encrypted.
+We modify the content of the static file that is served as reply with each request to the server. The flask app running inside the vanilla container will serve the updated content without issues.
+### SGX:
+```sh
+docker exec -it flask-sgx bash -c "echo 'Goodbye SGX' > /app/static/message.txt"
+docker exec -it flask-sgx curl localhost:5000/
+```
+Trying the same within the SGX container will lead to a `500`-error from the endpoint.
+
+```sh
+docker exec -it flask-sgx cat flask-gramine-sgx.log
+```
+Looking at the gramine log we can see that the static file will not be accepted since its hash value
+no longer matches the initial value at startup. 
