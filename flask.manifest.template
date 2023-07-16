@@ -6,7 +6,7 @@ sgx.nonpie_binary = true
 loader.entrypoint = "file:{{ gramine.libos }}"
 loader.env.LD_LIBRARY_PATH = "/lib:{{ arch_libdir }}"
 
-loader.log_level = "warning"
+loader.log_level = "error"
 loader.log_file = "flask-gramine-sgx.log"
 sgx.max_threads = 8
 sgx.debug = false
