@@ -1,33 +1,16 @@
 from flask import Flask
-from logging.config import dictConfig
-
-dictConfig(
-    {
-        "version": 1,
-        "formatters": {
-            "default": {
-                "format": "[%(asctime)s] %(levelname)s | %(module)s >>> %(message)s",
-            }
-        },
-        "handlers": {
-            "console": {
-                "class": "logging.StreamHandler",
-                "stream": "ext://sys.stdout",
-                "formatter": "default",
-            },
-            "file": {
-                "class": "logging.FileHandler",
-                "filename": "/app/data/flask.log",
-                "formatter": "default",
-            },
-        },
-        "root": {"level": "DEBUG", "handlers": ["console", "file"]},
-    }
-)
+import logging
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    app.logger.warn("Secret Log")
-    return 'Hello World!\n'
+def hello():
+    write_to_log_file("Sensitive Log Entry")
+    return 'Hello there!\n'
+
+
+def write_to_log_file(message):
+    log_file_path = '/app/data/flask.log'
+
+    with open(log_file_path, 'a') as file:
+        file.write(message + '\n')

@@ -8,7 +8,7 @@ loader.env.LD_LIBRARY_PATH = "/lib:{{ arch_libdir }}"
 
 loader.log_level = "warning"
 loader.log_file = "flask-gramine-sgx.log"
-
+sgx.max_threads = 8
 sgx.debug = false
 
 fs.mounts = [
@@ -16,7 +16,7 @@ fs.mounts = [
     { path = "/usr/",              uri = "file:/usr/" },
     { path = "/lib/",              uri = "file:/{{ gramine.runtimedir() }}/" },
     { path = "{{ arch_libdir }}/", uri = "file:{{ arch_libdir }}/" },
-    { path = "/app/data/",         uri = "file:/data/", type = "encrypted", key_name = "logkey" },
+    { path = "/app/data",         uri = "file:/data/", type = "encrypted", key_name = "logkey" },
 ]
 
 fs.insecure__keys.logkey = "ffeeddccbbaa99887766554433221100"
@@ -55,5 +55,4 @@ sgx.allowed_files = [
     "file:/etc/host.conf",
     "file:/etc/resolv.conf",
     "file:/etc/hosts",
-    "file:/data/",
 ]
