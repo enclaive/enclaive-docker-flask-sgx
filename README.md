@@ -137,7 +137,7 @@ docker compose up -d --build
 ## Modify the image
 
 The `/app/`-folder acts as the root for your flask application. Additional files and modules should be placed here. Build your code structure inside the `/app/`-folder as usual.
-A file names `app.py` or `wsgi.py` needs to be present and will be automatically recognised by the flask run command.
+A file named `app.py` or `wsgi.py` needs to be present and will be automatically recognised by the flask run command.
 
 Currently the flask app port `5000` is not exposed outside the container. Ports can be mapped through `docker-compose.yml` [(docu)](https://docs.docker.com/compose/networking/)
 
