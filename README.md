@@ -20,9 +20,9 @@
     <br />
     <a href="#contributing">Contribute</a>
     ·
-    <a href="https://github.com/ole-hansen/docker-flask-sgx/issues">Report Bug</a>
+    <a href="https://github.com/enclaive/enclaive-docker-python-sgx/issues">Report Bug</a>
     ·
-    <a href="https://github.com/ole-hansen/docker-flask-sgx/issues">Request Feature</a>
+    <a href="https://github.com/enclaive/enclaive-docker-python-sgx/issues">Request Feature</a>
   </p>
 </div>
 
@@ -30,7 +30,7 @@
 ## TL;DR
 
 ```sh
-git clone -b main https://github.com/ole-hansen/docker-flask-sgx.git
+git clone -b main git@github.com:enclaive/enclaive-docker-flask-sgx.git
 docker compose up -d
 ```
 **Warning**: This quick setup is only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options in the [build](#build-the-image) section for a more secure deployment.
@@ -129,7 +129,7 @@ Use `docker run hello-world` to check if you can run docker (without sudo).
 The following commands let you build and run the sgx enclaved flask application
 
 ```console
-git clone -b main https://github.com/ole-hansen/docker-flask-sgx.git
+git clone -b main git@github.com:enclaive/enclaive-docker-flask-sgx.git
 docker compose up -d --build
 ```
 

@@ -4,7 +4,7 @@ services:
 
   flask-sgx:
     container_name: flask-sgx
-    build: https://github.com/ole-hansen/docker-flask-sgx.git#main
+    build: https://github.com/enclaive/enclaive-docker-flask-sgx.git#main
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
       - "/dev/sgx/enclave:/dev/sgx_enclave"
