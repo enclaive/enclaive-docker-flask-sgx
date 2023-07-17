@@ -64,10 +64,13 @@ Following benefits come for free with Flask-SGX :
     * strictly better TOMs (technical and organizatorial measures)
     * privacy export regulations compliant deployment anywhere, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
     * GDPR/CCPA compliant processing ("data in use") of user data (in the cloud) as data is relatively anonymized thanks to the enclave
-* Flask-SGX secures data in transit, shielding it from the host system, when acting as a middleware layer between clients and backend components like databases or other services.
-* Flask-SGX ensures secure session management by safeguarding the Flask secret key within the secure enclave, enhancing the confidentiality and security of the application.
-* Flask-SGX benefits from Flask's modular approach, enabling the ability to run modules within separate enclaves, resulting in isolated and protected execution environments that enhance security.
-* Flask-SGX enclaved applications benefit from a small Trusted Computing Base (TCB) due to Flask's lightweight approach. This allows for tailoring the application to its precise requirements, incorporating only the minimal external code necessary.
+
+In addition Flask-SGX:
+
+* secures data in transit, shielding it from the host system, when acting as a middleware layer between clients and backend components like databases or other services.
+* ensures secure session management by safeguarding the Flask secret key within the secure enclave, enhancing the confidentiality and security of the application.
+* benefits from Flask's modular approach, enabling the ability to run modules within separate enclaves, resulting in isolated and protected execution environments that enhance security.
+* enclaved applications benefit from a small Trusted Computing Base (TCB) due to Flask's lightweight approach. This allows for tailoring the application to its precise requirements, incorporating only the minimal external code necessary.
 <!-- DEPLOY IN THE CLOUD -->
 ## How to deploy Python-SGX in a zero-trust cloud?
 
