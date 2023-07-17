@@ -3,12 +3,12 @@ version: '3'
 services:
 
   flask-sgx:
-    image: ole-hansen/flask-sgx
+    image: enclaive/flask-sgx
     container_name: flask-sgx
-    build: https://github.com/ole-hansen/docker-flask-sgx.git#main
+    build: https://github.com/enclaive/enclaive-docker-flask-sgx.git#main
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
   flask-vanilla:
-    image: ole-hansen/flask-vanilla
+    image: enclaive/flask-vanilla
     container_name: flask-vanilla
-    build: https://github.com/ole-hansen/docker-flask-sgx.git#demo
+    build: https://github.com/enclaive/enclaive-docker-flask-sgx.git#demo

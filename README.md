@@ -3,7 +3,7 @@ In this demo we will show gramine-sgx's capabilities of file encryption and its 
 
 ## build and run the demo
 ```sh
-git clone -b demo https://github.com/ole-hansen/docker-flask-sgx.git
+git clone -b demo git@github.com:enclaive/enclaive-docker-flask-sgx.git
 docker compose up -d --build
 ```
 ## query both server
