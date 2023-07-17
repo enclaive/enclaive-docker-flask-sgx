@@ -65,9 +65,9 @@ Following benefits come for free with Flask-SGX :
     * privacy export regulations compliant deployment anywhere, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
     * GDPR/CCPA compliant processing ("data in use") of user data (in the cloud) as data is relatively anonymized thanks to the enclave
 * Flask-SGX secures data in transit, shielding it from the host system, when acting as a middleware layer between clients and backend components like databases or other services.
-* Flasks secret key generation, when combined with SGX, can benefit from the secure enclave's protection to enhance the confidentiality and security of cryptographic operations and session management within Flask applications.
-* Flasks modular approach combined with SGX can be used to enhance security of each module, running them in seperate enclaves.
-
+* Flask-SGX ensures secure session management by safeguarding the Flask secret key within the secure enclave, enhancing the confidentiality and security of the application.
+* Flask-SGX benefits from Flask's modular approach, enabling the ability to run modules within separate enclaves, resulting in isolated and protected execution environments that enhance security.
+* Flask-SGX enclaved applications benefit from a small Trusted Computing Base (TCB) due to Flask's lightweight approach. This allows for tailoring the application to its precise requirements, incorporating only the minimal external code necessary.
 <!-- DEPLOY IN THE CLOUD -->
 ## How to deploy Python-SGX in a zero-trust cloud?
 
@@ -188,7 +188,6 @@ enclaive.io - [@enclaive_io](https://twitter.com/enclaive_io) - contact@enclaive
 
 This project greatly celebrates all contributions from the gramine team.
 
-* [enclaive.io](https://github.com/enclaive/)
 * [Gramine Project](https://github.com/gramineproject)
 * [Intel SGX](https://github.com/intel/linux-sgx-driver)
 * [Python](https://www.python.org/)
